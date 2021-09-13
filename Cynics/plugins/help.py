@@ -6,34 +6,18 @@ from Cynics import MAX_MESSAGE_LENGTH, PREFIX
 from Cynics.plugins import ALL_PLUGINS
 from Cynics import HELP_COMMANDS
 
-HELP_DEFAULT = f"""
-To get help for any command, just type `{PREFIX}help plugin_name`
-'plugin_name' should be the name of a proper plugin!
-
-**Get a list of all Plugins using:**
-`{PREFIX}plugins`.
-"""
-
-
-@CynicsCli.on_message(filters.command("plugins", PREFIX) & filters.me)
-async def list_plugins(c: CynicsCli, m: Message):
-    # Some Variables
+@CynicsCli.on_message(filters.command("help", PREFIX) & filters.me)
+async def help_me(c: CynicsCli, m: Message):
     mods = ""
     mod_num = 0
     # Some Variables
     plugins = list(HELP_COMMANDS.keys())
     for plug in plugins:
-        mods += f"`{plug}`\n"
+        mods += f"`{plug}` "
         mod_num += 1
-    all_plugins = f"<b><u>{mod_num}</u> Modules Currently Loaded:</b>\n\n" + mods
-    await m.edit_text(all_plugins)
-    return
-
-
-@CynicsCli.on_message(filters.command("help", PREFIX) & filters.me)
-async def help_me(c: CynicsCli, m: Message):
+    all_plugins = f"<i><b>⚡Currently module loaded {mod_num}. Do {PREFIX}help <plugin_name> to get info about it.</b></i>\n\n" + mods    
     if len(m.command) == 1:
-        await m.edit_text(HELP_DEFAULT)
+        await m.edit_text(all_plugins)
     elif len(m.command) == 2:
         module_name = m.text.split(None, 1)[1]
         try:
@@ -45,3 +29,4 @@ async def help_me(c: CynicsCli, m: Message):
     else:
         await m.edit_text(f"Use `{PREFIX}help` to view help")
     return
+
