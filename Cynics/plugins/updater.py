@@ -112,7 +112,7 @@ async def upstream(c: CynicsCli, message: Message):
             )
             repo.__del__()
             return
-    if HEROKU_API is not None:
+    if HEROKU_API_KEY is not None:
         import heroku3
 
         heroku = heroku3.from_key(HEROKU_API_KEY)
