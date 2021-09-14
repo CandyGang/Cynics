@@ -11,8 +11,13 @@
       "required": true
     },
     "STRING_SESSION": {
-      "description": "Get this value by running [python3 mysession.py] in Termux or local system.",
+      "description": "Get this value by running [python3 string_session.py] in Termux or local system.",
       "required": true
+    },
+    "UPSTREAM_REPO": {
+      "description": "your repo fork url, if you don't know about this leave as it.",
+      "required": false
+      "value": "https://github.com/CandyGang/Cynics"
     },
     "DATABASE_URL": {
       "description": "This is for the database account, you can obtain it from mongodb.com.",
@@ -29,7 +34,7 @@
     "PREFIX": {
       "description": "Command handler. Example [ , ]",
       "required": true,
-      "vale": ","
+      "vale": "."
     },
     "LOG_GROUP_ID": {
       "description": "A private group id to store your logs.",
