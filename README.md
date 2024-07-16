@@ -1,4 +1,4 @@
-# Cynics 
+# Cynics [Closed]
 > A Powerful Safest Userbot Powered By Pyrogram.
 
 
